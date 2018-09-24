@@ -31,7 +31,13 @@ class ViewController: UIViewController{
         
         let soundURL = Bundle.main.url(forResource: "note1", withExtension: "wav")
         
-        try! audioPlayer = AVAudioPlayer(contentsOf: soundURL!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL!)
+        } catch {
+            print(error)
+        }
+        
+        audioPlayer.play()
     }
     
 }
